@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use App\Services\ImagesService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class PostService
 {
@@ -12,6 +13,11 @@ class PostService
     public function __construct(ImagesService $imagesService)
     {
         $this->imageService = $imagesService;
+    }
+
+    public function getAll()
+    {
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->get();
     }
 
     public function all()
@@ -24,9 +30,11 @@ class PostService
         return DB::table('posts')->select("*")->where('id', $id)->first();
     }
 
-    public function add($data, $id)
+    public function add($data)
     {
-       return DB::table('posts')->where('id', $id)->insertGetId($data);
+        $data['post_slug'] = Str::slug($data['title'], '_');
+        $data['category_id'] = (int)($data['category_id']);
+        return DB::table('posts')->insertGetId($data);
     }
 
     public function update($id, $data)

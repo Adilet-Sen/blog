@@ -15,7 +15,7 @@ class ImagesService
     public function add($filename, $user_id){
         DB::table('images')->insert([
             'image'=>$filename,
-            'user_id' => $user_id
+            'posts_id' => $user_id
             ]
         );
     }

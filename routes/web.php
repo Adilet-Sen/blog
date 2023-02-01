@@ -25,7 +25,7 @@ Route::get('/post/{slug}', 'PostController@getPost');
 
 Route::get('/create', 'PostController@createView');
 
-Route::post('/store','PostController@storePost');
+Route::post('/store','PostController@store');
 
 Route::get('/edit', 'PostController@editView');
 

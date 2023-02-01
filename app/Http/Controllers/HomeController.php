@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Service\PostService;
+use App\Services\PostService;
 use App\Services\ImagesService;
 
 class HomeController extends Controller
@@ -19,7 +19,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('index', ['posts' => $this->postService->all(), 'image' => $this->imageService->all()]);
+        dd($this->postService->getAll());
+        return view('index', ['posts' => $this->postService->getAll()]);
     }
 
     public function about(){

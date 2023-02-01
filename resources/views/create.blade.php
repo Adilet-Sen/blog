@@ -6,11 +6,20 @@
         <form action="/store" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <!-- Text input -->
+
             <div class="form-outline mb-4">
                 <label class="form-label" for="form6Example3">Title:</label>
                 <input name="title" type="text" id="form6Example3" class="form-control" />
             </div>
-
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="form6Example3">Category:</label>
+                <select name="category_id" class="form-control" aria-label="Default select example">
+                    <option selected value="1">IT</option>
+                    <option value="2">LifeStyle</option>
+                    <option value="3">Food</option>
+                    <option value="4">Travel</option>
+                </select>
+                </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="form6Example3">Image post:</label>
                 <input name="image" type="file" id="form6Example3" class="form-control" />
