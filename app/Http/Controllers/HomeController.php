@@ -19,7 +19,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        dd($this->postService->getAll());
         return view('index', ['posts' => $this->postService->getAll()]);
     }
 

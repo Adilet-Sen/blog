@@ -17,7 +17,7 @@ class PostService
 
     public function getAll()
     {
-        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->get();
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->paginate(2)->get();
     }
 
     public function all()
