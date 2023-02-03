@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('index', ['posts' => $this->postService->getAll()]);
+        return view('index', ['posts' => $this->postService->getAll(), 'topposts'=> $this->postService->getTopPost(), 'counts' => $this->postService->getCount()]);
     }
 
     public function about(){

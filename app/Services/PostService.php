@@ -20,14 +20,36 @@ class PostService
         return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->simplePaginate(8);
     }
 
-    public function all()
+    public function all($number)
     {
-       return DB::table('posts')->select("*")->get()->all();
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->limit($number);
+    }
+
+    public function getCount()
+    {
+        $counts['Food'] = DB::table('posts')->where('category_id','=', 1)->count('category_id');
+        $counts['Travel'] = DB::table('posts')->where('category_id','=', 2)->count('category_id');
+        $counts['LifeStyle'] = DB::table('posts')->where('category_id','=', 3)->count('category_id');
+        $counts['IT'] = DB::table('posts')->where('category_id','=', 4)->count('category_id');
+        return $counts;
+    }
+
+    public function getCategory()
+    {
+        return DB::table('category')->select('title', 'category_slug')->get()->all();
+    }
+
+    public function getTopPost()
+    {
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->orderByDesc('view_count')->limit(3)->get();
     }
 
     public function getPost($slug)
     {
+        $count = DB::table('posts')->select('view_count')->where('post_slug', $slug)->first()->view_count;
+        DB::table('posts')->where('post_slug', $slug)->update(['view_count' => ++$count]);
         return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->where('post_slug', $slug)->first();
+
     }
 
     public function getOne($id)

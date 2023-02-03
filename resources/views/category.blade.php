@@ -56,19 +56,23 @@
     <div class="container">
         <div class="row mb-4">
             <div class="col-md-6">
-                <h2 class="mb-4">Category: Food</h2>
+                <h2 class="mb-4">Category:
+                    @foreach($categorys as $categ)
+                        @if($categ->category_slug == $cat)
+                        {{$categ->title}}
+                        @endif
+                    @endforeach</h2>
             </div>
         </div>
         <div class="row blog-entries">
             <div class="col-md-12 col-lg-8 main-content">
                 <div class="row mb-5 mt-5">
-
                     <div class="col-md-12">
-
+                        @foreach($posts as $post)
                         <div class="post-entry-horzontal">
-                            <a href="/post">
+                            <a href="/post/{{$post->post_slug}}">
                                 <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_10.jpg);"></div>
+                                    style="background-image: url(/{{$post->image}});"></div>
                                 <span class="text">
                                     <div class="post-meta">
                                         <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
@@ -77,175 +81,37 @@
                                         <span class="mr-2">Food</span> &bullet;
                                         <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
                                     </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
+                                    <h2>{{$post->title}}</h2>
                                 </span>
                             </a>
                         </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_11.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_12.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_9.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_8.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_7.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_6.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_5.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- END post -->
-
-                        <div class="post-entry-horzontal">
-                            <a href="/post">
-                                <div class="image element-animate" data-animate-effect="fadeIn"
-                                    style="background-image: url(/images/img_4.jpg);"></div>
-                                <span class="text">
-                                    <div class="post-meta">
-                                        <span class="author mr-2"><img src="/images/person_1.jpg" alt="Colorlib">
-                                            Colorlib</span>&bullet;
-                                        <span class="mr-2">March 15, 2018 </span> &bullet;
-                                        <span class="mr-2">Food</span> &bullet;
-                                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                                    </div>
-                                    <h2>There’s a Cool New Way for Men to Wear Socks and Sandals</h2>
-                                </span>
-                            </a>
-                        </div>
+                    @endforeach
                         <!-- END post -->
 
                     </div>
                 </div>
 
-                <div class="row mt-5">
+                <div class="row mt-5 mb-5">
                     <div class="col-md-12 text-center">
-                        <nav aria-label="Page navigation" class="text-center">
-                            <ul class="pagination">
-                                <li class="page-item  active"><a class="page-link" href="#">&lt;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&gt;</a></li>
-                            </ul>
-                        </nav>
+                        {{ $posts->links() }}
                     </div>
                 </div>
+
+{{--                <div class="row mt-5">--}}
+{{--                    <div class="col-md-12 text-center">--}}
+{{--                        <nav aria-label="Page navigation" class="text-center">--}}
+{{--                            <ul class="pagination">--}}
+{{--                                <li class="page-item  active"><a class="page-link" href="#">&lt;</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">4</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">5</a></li>--}}
+{{--                                <li class="page-item"><a class="page-link" href="#">&gt;</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
 
 
@@ -286,39 +152,19 @@
                     <h3 class="heading">Popular Posts</h3>
                     <div class="post-entry-sidebar">
                         <ul>
-                            <li>
-                                <a href="">
-                                    <img src="/images/img_2.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
+                            @foreach($topposts as $tpost)
+                                <li>
+                                    <a href="/post/{{$tpost->post_slug}}">
+                                        <img src="/{{$tpost->image}}" alt="Image placeholder" class="mr-4">
+                                        <div class="text">
+                                            <h4>{{$tpost->title}}</h4>
+                                            <div class="post-meta">
+                                                <span class="mr-2">March 15, 2018 </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/img_4.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="/images/img_12.jpg" alt="Image placeholder" class="mr-4">
-                                    <div class="text">
-                                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                                        <div class="post-meta">
-                                            <span class="mr-2">March 15, 2018 </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -327,11 +173,9 @@
                 <div class="sidebar-box">
                     <h3 class="heading">Categories</h3>
                     <ul class="categories">
-                        <li><a href="#">Food <span>(12)</span></a></li>
-                        <li><a href="#">Travel <span>(22)</span></a></li>
-                        <li><a href="#">Lifestyle <span>(37)</span></a></li>
-                        <li><a href="#">Business <span>(42)</span></a></li>
-                        <li><a href="#">Adventure <span>(14)</span></a></li>
+                        @foreach($counts as $key => $value)
+                            <li><a href="/category/{{Str::slug($key, '_')}}">{{$key}} <span>({{$value}})</span></a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <!-- END sidebar-box -->
@@ -340,19 +184,13 @@
                     <h3 class="heading">Tags</h3>
                     <ul class="tags">
                         <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
                         <li><a href="#">Food</a></li>
                         <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
                         <li><a href="#">Freelancing</a></li>
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Food</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Freelancing</a></li>
+                        <li><a href="#">IT</a></li>
                     </ul>
-                </div>
+                </div>              <!-- END sidebar-box -->
+
             </div>
             <!-- END sidebar -->
 

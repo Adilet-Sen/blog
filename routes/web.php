@@ -19,7 +19,7 @@ Route::get('/about', 'HomeController@about');
 
 Route::get('/contact', 'HomeController@contact');
 
-Route::get('/category/{category}/{sub_category}','CategoryController@category');
+Route::get('/category/{category?}/{sub_category?}','PostController@category');
 
 Route::get('/post/{slug?}', 'PostController@getPost');
 
