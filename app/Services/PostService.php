@@ -17,12 +17,17 @@ class PostService
 
     public function getAll()
     {
-        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->paginate(2)->get();
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->simplePaginate(8);
     }
 
     public function all()
     {
        return DB::table('posts')->select("*")->get()->all();
+    }
+
+    public function getPost($slug)
+    {
+        return DB::table('posts')->join('images', 'posts.id', '=','images.posts_id')->join('category', 'posts.category_id', '=', 'category.id')->select('posts.*', 'images.image', 'category.title as cat_title')->where('post_slug', $slug)->first();
     }
 
     public function getOne($id)

@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function getPost($slug)
     {
-        return view('post');
+        return view('post', ['post' => $this->postService->getPost($slug)]);
     }
 
     public function createView()
@@ -32,7 +32,7 @@ class PostController extends Controller
 
         $post_id = $this->postService->add($request->all(['title', 'content', 'category_id']));
         $this->imageService->add($request->image->store('uploads'), $post_id);
-        return redirect('/');
+//        return redirect('/');
     }
 
 }
