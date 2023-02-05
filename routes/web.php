@@ -27,6 +27,8 @@ Route::get('/create', 'PostController@createView');
 
 Route::post('/store','PostController@store');
 
-Route::get('/edit', 'PostController@editView');
+Route::get('/edit/{slug?}', 'PostController@editView');
 
-Route::post('/update', 'PostController@updatePost');
+Route::post('/update/{slug?}', 'PostController@updatePost');
+
+Route::get('/delete/{id}', 'PostController@delete');

@@ -6,6 +6,7 @@ use App\Services\ImagesService;
 use App\Services\PostService;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use function GuzzleHttp\Promise\all;
 
 class PostController extends Controller
@@ -36,7 +37,7 @@ class PostController extends Controller
 
         $post_id = $this->postService->add($request->all(['title', 'content', 'category_id']));
         $this->imageService->add($request->image->store('uploads'), $post_id);
-        return redirect('/');
+//        return redirect('/');
     }
 
     public function category($category=null, $sub_category=null)
@@ -49,4 +50,22 @@ class PostController extends Controller
      ]);
     }
 
+    public function editView($slug)
+    {
+        return view('edit',['post' => $this->postService->getPost($slug)]);
+    }
+
+    public function updatePost($slug, Request $request)
+    {
+
+        $post_id = $this->postService->update($slug,$request->all(['title', 'content', 'category_id']));
+        $this->imageService->update($post_id, $request->image);
+        return redirect('/');
+    }
+
+    public function delete($id)
+    {
+        $this->postService->delete($id);
+        redirect('/');
+    }
 }

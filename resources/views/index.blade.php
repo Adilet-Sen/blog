@@ -133,6 +133,7 @@
         <div class="row blog-entries">
             <div class="col-md-12 col-lg-8 main-content">
                 <div class="row">
+
                     @foreach($posts as $post)
                     <div class="col-md-6">
                         <a href="/post/{{$post->post_slug}}" class="blog-entry element-animate" data-animate-effect="fadeIn">

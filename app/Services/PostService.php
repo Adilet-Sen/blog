@@ -64,14 +64,19 @@ class PostService
         return DB::table('posts')->insertGetId($data);
     }
 
-    public function update($id, $data)
-    {
-        $this->imageService->update($id, $data->image);
-        DB::table('posts')->where('id',$id)->update($data);
+    public function update($slug,$data)
+    {   $id = DB::table('posts')->select('id')->where('post_slug', $slug)->first()->id;
+        $data['post_slug'] = Str::slug($data['title'], '_');
+        $data['category_id'] = (int)($data['category_id']);
+
+        DB::table('posts')->where('id', $id)->update($data);
+        return $id;
     }
 
     public function delete($id)
     {
         DB::table('posts')->where('id', $id)->delete();
+        $this->imageService->delete($id);
+
     }
 }
